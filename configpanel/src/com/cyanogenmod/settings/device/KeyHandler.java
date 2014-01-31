@@ -17,7 +17,7 @@ import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 
 import com.android.internal.os.DeviceKeyHandler;
-import com.android.internal.util.cm.NavigationRingHelpers;
+import com.android.internal.util.cm.QSUtils;
 import com.android.internal.util.cm.TorchConstants;
 
 public class KeyHandler implements DeviceKeyHandler {
@@ -65,7 +65,7 @@ public class KeyHandler implements DeviceKeyHandler {
             consumed = true;
             break;
         case GESTURE_V_SCANCODE:
-            if (NavigationRingHelpers.isTorchAvailable(mContext)) {
+            if (QSUtils.isTorchAvailable(mContext)) {
                 Intent torchIntent = new Intent(TorchConstants.ACTION_TOGGLE_STATE);
                 mContext.sendBroadcast(torchIntent);
                 if (!isTorchActive()) {
